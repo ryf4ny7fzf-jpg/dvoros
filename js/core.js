@@ -84,7 +84,7 @@ const muteBtn = $('#mute');
 function syncMute() {
   if (!muteBtn) return;
   muteBtn.classList.toggle('off', muted);
-  muteBtn.title = muted ? 'Включить звук' : 'Выключить звук';
+  muteBtn.title = muted ? T('mute_on') : T('mute_off');
   try { localStorage.setItem('dr_muted', muted ? '1' : '0'); } catch (e) { }
 }
 syncMute();
@@ -119,6 +119,8 @@ function voidSequence() {
   const q = $('#voidQ');
   const r = $('#voidReset');
   if (!q || !r) return;
+  q.textContent = T('void_q');
+  r.textContent = T('void_reset');
   q.classList.remove('on');
   r.classList.remove('on');
   revealTimers.push(setTimeout(() => q.classList.add('on'), 1600));
@@ -129,6 +131,7 @@ function setScreen(id) {
   if (id !== 's-light') lightStop();
   if (id !== 's-abyss') abyssStop();
   clearReveals();
+  TALL();
   $$('.screen').forEach((s) => s.classList.toggle('show', s.id === id));
   current = id;
   document.body.classList.toggle('is-void', id === 's-void');
