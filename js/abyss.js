@@ -96,6 +96,7 @@ function initAbyss() {
   A.flash = 0;
   A.bg1 = 0;
   A.bg2 = 0;
+  A.ruinLine = 0;
   A.p = { h: 0, vy: 0, slide: 0, inv: 0, phase: 0 };
   A.obstacles = [];
   A.parts = [];
@@ -270,6 +271,10 @@ function updateAbyss(dt) {
   if (A.shake < 0.25) A.shake = 0;
   A.flash = Math.max(0, A.flash - dt * 1.4);
 
+  if (A.state === 'run') {
+    A.ruinLine = Math.min(1, Math.max(0, (A.distance - 24000) / 76000)) * A.W;
+  }
+
   for (const p of A.parts) {
     p.t += dt;
     p.x += p.vx * dt;
@@ -416,8 +421,8 @@ function drawAbyss() {
   ctx.fill();
 
   /* city */
-  drawSkyline(ctx, A.bg1, gy, '#160b16', 180, H * 0.1, H * 0.33, 'rgba(255,120,70,.18)');
-  drawSkyline(ctx, A.bg2, gy, '#0b060c', 140, H * 0.07, H * 0.22, 'rgba(255,90,60,.14)');
+  drawSkyline(ctx, A.bg1, gy, '#160b16', 180, H * 0.1, H * 0.33, 'rgba(255,120,70,.18)', A.ruinLine);
+  drawSkyline(ctx, A.bg2, gy, '#0b060c', 140, H * 0.07, H * 0.22, 'rgba(255,90,60,.14)', A.ruinLine);
 
   /* ground */
   ctx.fillStyle = '#08050a';
@@ -490,16 +495,31 @@ function drawAbyss() {
   }
 }
 
-function drawSkyline(ctx, offset, baseY, color, step, minH, maxH, winColor) {
+function drawSkyline(ctx, offset, baseY, color, step, minH, maxH, winColor, ruinLine) {
   const first = Math.floor(offset / step) - 1;
   const count = Math.ceil(A.W / step) + 3;
   const rem = offset % step;
   for (let k = 0; k < count; k++) {
     const idx = first + k;
     const n = fract(Math.sin(idx * 127.1 + 13.7) * 43758.5453);
-    const h = minH + (maxH - minH) * n;
+    let h = minH + (maxH - minH) * n;
     const w = step * (0.55 + 0.35 * fract(Math.sin(idx * 311.7) * 12543.21));
     const x = idx * step - rem;
+    if (ruinLine && x + w < ruinLine) {
+      h = Math.max(h * 0.4, 16);
+      ctx.fillStyle = color;
+      ctx.fillRect(x, baseY - h, w, h);
+      ctx.strokeStyle = 'rgba(60,20,10,.55)';
+      ctx.lineWidth = 1.5;
+      const broken = fract(Math.sin(idx * 71.13 + 5.9) * 6181.6) > 0.4;
+      for (let i = 0; i < 2 && broken; i++) {
+        ctx.beginPath();
+        ctx.moveTo(x + 3, baseY - 6);
+        ctx.lineTo(x + 7, baseY + 4);
+        ctx.stroke();
+      }
+      continue;
+    }
     ctx.fillStyle = color;
     ctx.fillRect(x, baseY - h, w, h);
 
