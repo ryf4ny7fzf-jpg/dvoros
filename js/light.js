@@ -369,29 +369,29 @@ function showLightResult(win) {
   const text = $('#lrText');
 
   if (win) {
-    kicker.textContent = 'Уровень ' + L.level + ' / ' + TOTAL_LEVELS;
+    kicker.textContent = T('light_level') + ' ' + L.level + ' / ' + TOTAL_LEVELS;
     if (L.level < TOTAL_LEVELS) {
-      title.textContent = 'Крест собран';
-      text.textContent = 'Семь осколков соединились. Следующий круг — быстрее и темнее.';
-      btn.textContent = 'Следующий уровень';
+      title.textContent = T('light_result_won');
+      text.textContent = T('light_won_text');
+      btn.textContent = T('light_won_next');
       btn.onclick = () => {
         panel.classList.remove('show');
         startLight(L.level + 1);
       };
     } else {
-      title.textContent = 'Путь света пройден';
-      text.textContent = 'Семь кругов позади. Крест цел, и свет больше не гаснет.';
-      btn.textContent = 'К свету';
+      title.textContent = T('light_result_level_end');
+      text.textContent = T('light_result_level_end_text');
+      btn.textContent = T('light_result_level_end_btn');
       btn.onclick = () => {
         panel.classList.remove('show');
         setScreen('s-light-end');
       };
     }
   } else {
-    kicker.textContent = 'Уровень ' + L.level + ' / ' + TOTAL_LEVELS;
-    title.textContent = 'Время вышло';
-    text.textContent = 'Осколки рассыпались. Тьма сгустилась чуть сильнее — но круг можно пройти снова.';
-    btn.textContent = 'Ещё раз';
+    kicker.textContent = T('light_level') + ' ' + L.level + ' / ' + TOTAL_LEVELS;
+    title.textContent = T('light_result_lost');
+    text.textContent = T('light_lost_text');
+    btn.textContent = T('light_result_restart');
     btn.onclick = () => {
       panel.classList.remove('show');
       startLight(L.level);
