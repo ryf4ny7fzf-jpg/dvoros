@@ -438,23 +438,24 @@ function drawLight() {
   }
   ctx.restore();
 
-  /* floor */
-  const fl = ctx.createRadialGradient(W * 0.5, H * 0.62, 20, W * 0.5, H * 0.62, H * 0.6);
-  fl.addColorStop(0, 'rgba(230,194,122,.11)');
-  fl.addColorStop(1, 'rgba(230,194,122,0)');
+  /* floor — flat 2D ground */
+  const fl = ctx.createLinearGradient(0, H * 0.55, 0, H);
+  fl.addColorStop(0, 'rgba(60,36,14,.22)');
+  fl.addColorStop(0.85, 'rgba(14,12,18,.55)');
+  fl.addColorStop(1, '#0a090e');
   ctx.fillStyle = fl;
-  ctx.fillRect(0, 0, W, H);
-
-  ctx.save();
-  ctx.translate(W * 0.5, H * 0.8);
-  for (let i = 1; i <= 4; i++) {
-    ctx.beginPath();
-    ctx.ellipse(0, 0, W * 0.15 * i, H * 0.04 * i, 0, 0, TAU);
-    ctx.strokeStyle = 'rgba(230,194,122,' + (0.1 - i * 0.015) + ')';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-  }
-  ctx.restore();
+  ctx.fillRect(0, H * 0.55, W, H - H * 0.55);
+  ctx.strokeStyle = 'rgba(230,194,122,.45)';
+  ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  ctx.moveTo(0, H * 0.55);
+  ctx.lineTo(W, H * 0.55);
+  ctx.stroke();
+  ctx.strokeStyle = 'rgba(230,194,122,.12)';
+  ctx.beginPath();
+  ctx.moveTo(0, H * 0.55 + 4);
+  ctx.lineTo(W, H * 0.55 + 4);
+  ctx.stroke();
 
   /* motes */
   for (const m of L.motes) {
