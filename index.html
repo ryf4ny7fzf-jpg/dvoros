@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Две дороги — интерактивная притча</title>
+<meta name="description" content="Интерактивная притча: пойти за светом или своим путём. Две игры, два финала."/>
+<meta name="theme-color" content="#050508"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23050508'/><path d='M14 4h4v8h8v4h-8v12h-4V16H6v-4h8z' fill='%23e6c27a'/></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- ============ LANDING ============ -->
+<section class="screen show" id="s-landing">
+  <div class="landing-bg"><img src="img/jesus.svg" alt="Иисус Христос с протянутой рукой"/></div>
+  <div class="landing-content">
+    <div class="kicker">Интерактивная притча</div>
+    <h1>Две<span>дороги</span></h1>
+    <p class="lead">Он стоит перед тобой и протягивает руку.<br/>Выбор — только твой.</p>
+    <div class="actions actions-col">
+      <button class="btn btn-gold" data-act="light">Пойти с Ним</button>
+      <button class="btn btn-ghost" data-act="abyss">Своим путём</button>
+    </div>
+    <div class="landing-meta">2 пути · 2 финала · ≈ 4 минуты</div>
+  </div>
+  <div class="landing-quote">«Я есмь путь и истина и жизнь»<span>Ин. 14:6</span></div>
+</section>
+
+<!-- ============ LIGHT INTRO ============ -->
+<section class="screen intro" id="s-light-intro">
+  <div class="intro-bg"><img src="img/jesus.svg" alt=""/></div>
+  <div class="wrap">
+    <div class="card">
+      <div class="kicker">Путь первый</div>
+      <h2>Свет</h2>
+      <p class="card-lead">Хранитель рассыпал крест на семь осколков и убегает. Догони его, собери осколки и почини крест — пока не истекло время.</p>
+      <ul class="rules">
+        <li><b>Движение</b> — WASD, стрелки или палец по экрану.</li>
+        <li><b>Осколки</b> — коснись хранителя, чтобы он выронил часть креста.</li>
+        <li><b>Монстры</b> — со второго уровня будут отнимать время.</li>
+        <li><b>Цель</b> — пройти семь уровней. Каждый — быстрее и темнее.</li>
+      </ul>
+      <div class="actions">
+        <button class="btn btn-gold" data-act="startLight">Начать путь</button>
+        <button class="btn btn-ghost btn-sm" data-act="home">Назад</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIGHT GAME ============ -->
+<section class="screen game" id="s-light">
+  <canvas id="lightCanvas" aria-label="Игровое поле: собери осколки креста"></canvas>
+
+  <div class="hud hud-light">
+    <div class="stat">
+      <span class="stat-label">Уровень</span>
+      <b id="lightLevel">1</b><span class="stat-sub">/ 7</span>
+    </div>
+    <div class="frag">
+      <span class="stat-label">Крест</span>
+      <div class="dots" id="lightDots"></div>
+    </div>
+    <div class="stat right">
+      <span class="stat-label">Время</span>
+      <b id="lightTime">52</b><span class="stat-sub">сек</span>
+    </div>
+  </div>
+  <div class="timebar"><i id="lightTimeBar"></i></div>
+  <div class="hint-bar">WASD / стрелки · на телефоне — веди пальцем · Esc — выйти</div>
+
+  <div class="result" id="lightResult">
+    <div class="result-card">
+      <div class="kicker" id="lrKicker">Уровень 1</div>
+      <h3 id="lrTitle">Крест собран</h3>
+      <p id="lrText"></p>
+      <div class="actions">
+        <button class="btn btn-gold" id="lrNext">Дальше</button>
+        <button class="btn btn-ghost btn-sm" data-act="home">В начало</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABYSS INTRO ============ -->
+<section class="screen intro intro-abyss" id="s-abyss-intro">
+  <div class="intro-bg"><img src="img/demon.svg" alt=""/></div>
+  <div class="wrap">
+    <div class="card">
+      <div class="kicker">Путь второй</div>
+      <h2>Своя дорога</h2>
+      <p class="card-lead">Ты выбрал идти один. Позади — демон. Он не отстаёт и говорит то, что ты и сам боялся услышать.</p>
+      <ul class="rules">
+        <li><b>Беги</b> — прыжок: ↑ / пробел / тап. Подкат: ↓ / S.</li>
+        <li><b>Он рядом</b> — три удара, и демон догонит.</li>
+        <li><b>Цель</b> — <b>100 000 метров</b>. Только тогда он устанет.</li>
+        <li><b>Финал</b> — у павшего демона будет выбор. Окончательный.</li>
+      </ul>
+      <label class="check">
+        <input type="checkbox" id="censor" checked/>
+        <span>Цензура в речи демона</span>
+      </label>
+      <p class="tiny">Сними галочку, если готов услышать его без фильтра. 18+</p>
+      <div class="actions">
+        <button class="btn btn-blood" data-act="startAbyss">Бежать</button>
+        <button class="btn btn-ghost btn-sm" data-act="home">Назад</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABYSS GAME ============ -->
+<section class="screen game" id="s-abyss">
+  <canvas id="abyssCanvas" aria-label="Бег от демона"></canvas>
+
+  <div class="hud hud-abyss">
+    <div class="abyss-left">
+      <div class="hearts" id="abyssHearts"><span>♥</span><span>♥</span><span>♥</span></div>
+      <div class="danger-wrap"><i id="abyssDanger"></i></div>
+      <div class="hud-caption">он близко</div>
+    </div>
+    <div class="abyss-mid">
+      <span class="stat-label">Расстояние</span>
+      <div class="dist"><b id="abyssDist">0</b><span>м</span></div>
+      <div class="progress"><i id="abyssProgress"></i></div>
+      <div class="hud-caption">цель — 100 000 м</div>
+    </div>
+    <div class="abyss-right">
+      <button class="mini" data-act="home">выйти</button>
+    </div>
+  </div>
+
+  <div class="touch" id="abyssTouch">
+    <button id="btnJump" data-arrow="↑">Прыжок</button>
+    <button id="btnSlide" data-arrow="↓">Подкат</button>
+  </div>
+</section>
+
+<!-- ============ CHOICE ============ -->
+<section class="screen" id="s-choice">
+  <div class="choice-bg"><img src="img/demon.svg" alt=""/></div>
+  <div class="choice-inner">
+    <div class="kicker">100 000 метров</div>
+    <h2>Он больше не бежит</h2>
+    <p>Демон выбился из сил. Он опустился на колени и смотрит на тебя. В его глазах — страх.</p>
+    <p class="choice-q">Что ты сделаешь?</p>
+    <div class="choice-actions">
+      <button class="btn btn-blood" data-act="kill">Убить его</button>
+      <button class="btn btn-gold" data-act="spare">Пощадить</button>
+    </div>
+    <div class="choice-note">Выбор окончательный.</div>
+  </div>
+</section>
+
+<!-- ============ VOID ============ -->
+<section class="screen" id="s-void">
+  <div class="void-q" id="voidQ">Оно того стоило?</div>
+  <button class="void-reset" id="voidReset" data-act="restart">начать заново</button>
+</section>
+
+<!-- ============ GRACE ============ -->
+<section class="screen grace" id="s-grace">
+  <div class="grace-bg"><img src="img/jesus.svg" alt="Иисус"/><div class="kiss"></div></div>
+  <div class="grace-content">
+    <div class="reveal" data-d="0">
+      <div class="kicker">Своя дорога · финал</div>
+      <h2>Ты не поднял руку</h2>
+    </div>
+    <p class="reveal" data-d="700">Демон остался жив. И мир не исчез — он растворился в свете.</p>
+    <p class="reveal" data-d="1500">Иисус подошёл, поблагодарил тебя… и поцеловал в лоб.</p>
+    <p class="reveal grace-line" data-d="2400">«Ты выбрал милость. Это и есть путь».</p>
+    <div class="reveal proverb" data-d="3400">
+      <p>Не убивай врага своего —<br/>убив его, ты не убьёшь вражду.</p>
+      <span>древняя мудрость</span>
+    </div>
+    <div class="reveal" data-d="4400">
+      <button class="btn btn-gold" data-act="restart">Начать заново</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIGHT END ============ -->
+<section class="screen light-end" id="s-light-end">
+  <div class="landing-bg"><img src="img/jesus.svg" alt=""/></div>
+  <div class="landing-content">
+    <div class="reveal" data-d="0">
+      <div class="kicker">Путь света · финал</div>
+      <h2>Крест цел</h2>
+    </div>
+    <p class="lead reveal" data-d="800">Семь кругов позади. Ты не оставил крест разбитым — и свет больше не гаснет.</p>
+    <p class="reveal grace-line" data-d="1800">«Иди с миром».</p>
+    <div class="reveal" data-d="2800">
+      <button class="btn btn-gold" data-act="restart">Начать заново</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAUGHT ============ -->
+<section class="screen" id="s-caught">
+  <div class="caught-inner">
+    <div class="kicker">Он догнал тебя</div>
+    <h2>Тьма</h2>
+    <p>Демон не устал. Он просто больше не отпускал.</p>
+    <div class="actions">
+      <button class="btn btn-gold" data-act="startAbyss">Ещё раз</button>
+      <button class="btn btn-ghost btn-sm" data-act="home">В начало</button>
+    </div>
+  </div>
+</section>
+
+<noscript><div class="noscript">Для этой притчи нужен JavaScript.</div></noscript>
+
+<button id="mute" class="mute" aria-label="Звук" title="Звук">♪</button>
+
+<script src="js/core.js"></script>
+<script src="js/light.js"></script>
+<script src="js/abyss.js"></script>
+<script src="js/boot.js"></script>
+</body>
+</html>
