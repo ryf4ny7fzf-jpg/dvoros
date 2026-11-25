@@ -150,6 +150,13 @@ p{margin:0 0 16px}
   from{transform:scale(1.03)}
   to{transform:scale(1.11) translateY(-1.4%)}
 }
+#s-landing .landing-bg img{
+  animation: kenburns 36s ease-in-out infinite alternate, landBreathe 2.2s ease-in-out infinite alternate;
+}
+@keyframes landBreathe{
+  from{filter:drop-shadow(0 0 30px rgba(240,205,135,.35))}
+  to{filter:drop-shadow(0 0 55px rgba(240,205,135,.65))}
+}
 .landing-bg::after{
   content:'';
   position:absolute;inset:0;
