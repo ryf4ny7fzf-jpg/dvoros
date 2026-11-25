@@ -18,16 +18,16 @@
 <section class="screen show" id="s-landing">
   <div class="landing-bg"><img src="img/jesus.svg" alt="Иисус Христос с протянутой рукой"/></div>
   <div class="landing-content">
-    <div class="kicker">Интерактивная притча</div>
-    <h1>Две<span>дороги</span></h1>
-    <p class="lead">Он стоит перед тобой и протягивает руку.<br/>Выбор — только твой.</p>
+    <div class="kicker" data-i18n="landing_kicker">Интерактивная притча</div>
+    <h1 data-i18n-html="landing_h1">Две<span>дороги</span></h1>
+    <p class="lead" data-i18n-html="landing_lead">Он стоит перед тобой и протягивает руку.<br/>Выбор — только твой.</p>
     <div class="actions actions-col">
-      <button class="btn btn-gold" data-act="light">Пойти с Ним</button>
-      <button class="btn btn-ghost" data-act="abyss">Своим путём</button>
+      <button class="btn btn-gold" data-act="light" data-i18n="landing_light">Пойти с Ним</button>
+      <button class="btn btn-ghost" data-act="abyss" data-i18n="landing_abyss">Своим путём</button>
     </div>
-    <div class="landing-meta">2 пути · 2 финала · ≈ 4 минуты</div>
+    <div class="landing-meta" data-i18n="landing_meta">2 пути · 2 финала · ≈ 4 минуты</div>
   </div>
-  <div class="landing-quote">«Я есмь путь и истина и жизнь»<span>Ин. 14:6</span></div>
+  <div class="landing-quote" data-i18n="landing_quote">«Я есмь путь и истина и жизнь»<span data-i18n="landing_quote_verse">Ин. 14:6</span></div>
 </section>
 
 <!-- ============ LIGHT INTRO ============ -->
@@ -35,18 +35,13 @@
   <div class="intro-bg"><img src="img/jesus.svg" alt=""/></div>
   <div class="wrap">
     <div class="card">
-      <div class="kicker">Путь первый</div>
-      <h2>Свет</h2>
-      <p class="card-lead">Хранитель рассыпал крест на семь осколков и убегает. Догони его, собери осколки и почини крест — пока не истекло время.</p>
-      <ul class="rules">
-        <li><b>Движение</b> — WASD, стрелки или палец по экрану.</li>
-        <li><b>Осколки</b> — коснись хранителя, чтобы он выронил часть креста.</li>
-        <li><b>Монстры</b> — со второго уровня будут отнимать время.</li>
-        <li><b>Цель</b> — пройти семь уровней. Каждый — быстрее и темнее.</li>
-      </ul>
+      <div class="kicker" data-i18n="light_intro_kicker">Путь первый</div>
+      <h2 data-i18n="light_intro_h2">Свет</h2>
+      <p class="card-lead" data-i18n="light_intro_lead">Хранитель рассыпал крест на семь осколков и убегает. Догони его, собери осколки и почини крест — пока не истекло время.</p>
+      <ul class="rules" data-rules="light_intro_rules"></ul>
       <div class="actions">
-        <button class="btn btn-gold" data-act="startLight">Начать путь</button>
-        <button class="btn btn-ghost btn-sm" data-act="home">Назад</button>
+        <button class="btn btn-gold" data-act="startLight" data-i18n="light_intro_start">Начать путь</button>
+        <button class="btn btn-ghost btn-sm" data-act="home" data-i18n="light_intro_home">Назад</button>
       </div>
     </div>
   </div>
@@ -55,32 +50,30 @@
 <!-- ============ LIGHT GAME ============ -->
 <section class="screen game" id="s-light">
   <canvas id="lightCanvas" aria-label="Игровое поле: собери осколки креста"></canvas>
-
   <div class="hud hud-light">
     <div class="stat">
-      <span class="stat-label">Уровень</span>
+      <span class="stat-label" data-i18n="light_hud_level">Уровень</span>
       <b id="lightLevel">1</b><span class="stat-sub">/ 7</span>
     </div>
     <div class="frag">
-      <span class="stat-label">Крест</span>
+      <span class="stat-label" data-i18n="light_hud_cross">Крест</span>
       <div class="dots" id="lightDots"></div>
     </div>
     <div class="stat right">
-      <span class="stat-label">Время</span>
-      <b id="lightTime">52</b><span class="stat-sub">сек</span>
+      <span class="stat-label" data-i18n="light_hud_time">Время</span>
+      <b id="lightTime">52</b><span class="stat-sub" data-i18n="light_hud_time_sec">сек</span>
     </div>
   </div>
   <div class="timebar"><i id="lightTimeBar"></i></div>
-  <div class="hint-bar">WASD / стрелки · на телефоне — веди пальцем · Esc — выйти</div>
-
+  <div class="hint-bar" data-i18n="light_hint">WASD / стрелки · на телефоне — веди пальцем · Esc — выйти</div>
   <div class="result" id="lightResult">
     <div class="result-card">
       <div class="kicker" id="lrKicker">Уровень 1</div>
-      <h3 id="lrTitle">Крест собран</h3>
+      <h3 id="lrTitle" data-i18n="light_result_won">Крест собран</h3>
       <p id="lrText"></p>
       <div class="actions">
-        <button class="btn btn-gold" id="lrNext">Дальше</button>
-        <button class="btn btn-ghost btn-sm" data-act="home">В начало</button>
+        <button class="btn btn-gold" id="lrNext" data-i18n="light_result_next">Дальше</button>
+        <button class="btn btn-ghost btn-sm" data-act="home" data-i18n="light_result_restart">В начало</button>
       </div>
     </div>
   </div>
@@ -91,23 +84,18 @@
   <div class="intro-bg"><img src="img/demon.svg" alt=""/></div>
   <div class="wrap">
     <div class="card">
-      <div class="kicker">Путь второй</div>
-      <h2>Своя дорога</h2>
-      <p class="card-lead">Ты выбрал идти один. Позади — демон. Он не отстаёт и говорит то, что ты и сам боялся услышать.</p>
-      <ul class="rules">
-        <li><b>Беги</b> — прыжок: ↑ / пробел / тап. Подкат: ↓ / S.</li>
-        <li><b>Он рядом</b> — три удара, и демон догонит.</li>
-        <li><b>Цель</b> — <b>100 000 метров</b>. Только тогда он устанет.</li>
-        <li><b>Финал</b> — у павшего демона будет выбор. Окончательный.</li>
-      </ul>
+      <div class="kicker" data-i18n="abyss_intro_kicker">Путь второй</div>
+      <h2 data-i18n="abyss_intro_h2">Своя дорога</h2>
+      <p class="card-lead" data-i18n="abyss_intro_lead">Ты выбрал идти один. Позади — демон. Он не отстаёт и говорит то, что ты и сам боялся услышать.</p>
+      <ul class="rules" data-rules="abyss_intro_rules"></ul>
       <label class="check">
         <input type="checkbox" id="censor" checked/>
-        <span>Цензура в речи демона</span>
+        <span data-i18n="abyss_intro_censor">Цензура в речи демона</span>
       </label>
-      <p class="tiny">Сними галочку, если готов услышать его без фильтра. 18+</p>
+      <p class="tiny" data-i18n="abyss_intro_tiny">Сними галочку, если готов услышать его без фильтра.</p>
       <div class="actions">
-        <button class="btn btn-blood" data-act="startAbyss">Бежать</button>
-        <button class="btn btn-ghost btn-sm" data-act="home">Назад</button>
+        <button class="btn btn-blood" data-act="startAbyss" data-i18n="abyss_intro_start">Бежать</button>
+        <button class="btn btn-ghost btn-sm" data-act="home" data-i18n="abyss_intro_back">Назад</button>
       </div>
     </div>
   </div>
@@ -116,27 +104,25 @@
 <!-- ============ ABYSS GAME ============ -->
 <section class="screen game" id="s-abyss">
   <canvas id="abyssCanvas" aria-label="Бег от демона"></canvas>
-
   <div class="hud hud-abyss">
     <div class="abyss-left">
       <div class="hearts" id="abyssHearts"><span>♥</span><span>♥</span><span>♥</span></div>
       <div class="danger-wrap"><i id="abyssDanger"></i></div>
-      <div class="hud-caption">он близко</div>
+      <div class="hud-caption" data-i18n="abyss_hud_danger">он близко</div>
     </div>
     <div class="abyss-mid">
-      <span class="stat-label">Расстояние</span>
+      <span class="stat-label" data-i18n="abyss_hud_goal">Расстояние</span>
       <div class="dist"><b id="abyssDist">0</b><span>м</span></div>
       <div class="progress"><i id="abyssProgress"></i></div>
-      <div class="hud-caption">цель — 100 000 м</div>
+      <div class="hud-caption" data-i18n="abyss_hud_progress">цель — 100 000 м</div>
     </div>
     <div class="abyss-right">
-      <button class="mini" data-act="home">выйти</button>
+      <button class="mini" data-act="home" data-i18n="abyss_hud_exit">выйти</button>
     </div>
   </div>
-
   <div class="touch" id="abyssTouch">
-    <button id="btnJump" data-arrow="↑">Прыжок</button>
-    <button id="btnSlide" data-arrow="↓">Подкат</button>
+    <button id="btnJump" data-arrow="↑" data-i18n="abyss_intro_jump">Прыжок</button>
+    <button id="btnSlide" data-arrow="↓" data-i18n="abyss_intro_slide">Подкат</button>
   </div>
 </section>
 
@@ -144,22 +130,22 @@
 <section class="screen" id="s-choice">
   <div class="choice-bg"><img src="img/demon.svg" alt=""/></div>
   <div class="choice-inner">
-    <div class="kicker">100 000 метров</div>
-    <h2>Он больше не бежит</h2>
-    <p>Демон выбился из сил. Он опустился на колени и смотрит на тебя. В его глазах — страх.</p>
-    <p class="choice-q">Что ты сделаешь?</p>
+    <div class="kicker" data-i18n="choice_kicker">100 000 метров</div>
+    <h2 data-i18n="choice_title">Он больше не бежит</h2>
+    <p data-i18n="choice_p1">Демон выбился из сил. Он опустился на колени и смотрит на тебя.</p>
+    <p class="choice-q" data-i18n="choice_q">Что ты сделаешь?</p>
     <div class="choice-actions">
-      <button class="btn btn-blood" data-act="kill">Убить его</button>
-      <button class="btn btn-gold" data-act="spare">Пощадить</button>
+      <button class="btn btn-blood" data-act="kill" data-i18n="choice_kill">Убить его</button>
+      <button class="btn btn-gold" data-act="spare" data-i18n="choice_spare">Пощадить</button>
     </div>
-    <div class="choice-note">Выбор окончательный.</div>
+    <div class="choice-note" data-i18n="choice_note">Выбор окончательный.</div>
   </div>
 </section>
 
 <!-- ============ VOID ============ -->
 <section class="screen" id="s-void">
-  <div class="void-q" id="voidQ">Оно того стоило?</div>
-  <button class="void-reset" id="voidReset" data-act="restart">начать заново</button>
+  <div class="void-q" id="voidQ" data-i18n="void_q">Оно того стоило?</div>
+  <button class="void-reset" id="voidReset" data-act="restart" data-i18n="void_reset">начать заново</button>
 </section>
 
 <!-- ============ GRACE ============ -->
@@ -167,18 +153,18 @@
   <div class="grace-bg"><img src="img/jesus.svg" alt="Иисус"/><div class="kiss"></div></div>
   <div class="grace-content">
     <div class="reveal" data-d="0">
-      <div class="kicker">Своя дорога · финал</div>
-      <h2>Ты не поднял руку</h2>
+      <div class="kicker" data-i18n="grace_kicker">Своя дорога · финал</div>
+      <h2 data-i18n="grace_title">Ты не поднял руку</h2>
     </div>
-    <p class="reveal" data-d="700">Демон остался жив. И мир не исчез — он растворился в свете.</p>
-    <p class="reveal" data-d="1500">Иисус подошёл, поблагодарил тебя… и поцеловал в лоб.</p>
-    <p class="reveal grace-line" data-d="2400">«Ты выбрал милость. Это и есть путь».</p>
+    <p class="reveal" data-d="700" data-i18n="grace_p1">Демон остался жив. И мир не исчез — он растворился в свете.</p>
+    <p class="reveal" data-d="1500" data-i18n="grace_p2">Иисус подошёл, поблагодарил тебя… и поцеловал в лоб.</p>
+    <p class="reveal grace-line" data-d="2400" data-i18n="grace_line">«Ты выбрал милость. Это и есть путь».</p>
     <div class="reveal proverb" data-d="3400">
-      <p>Не убивай врага своего —<br/>убив его, ты не убьёшь вражду.</p>
-      <span>древняя мудрость</span>
+      <p data-i18n="grace_proverb">Не убивай врага своего —<br/>убив его, ты не убьёшь вражду.</p>
+      <span data-i18n="grace_proverb_ver">древняя мудрость</span>
     </div>
     <div class="reveal" data-d="4400">
-      <button class="btn btn-gold" data-act="restart">Начать заново</button>
+      <button class="btn btn-gold" data-act="restart" data-i18n="grace_btn">Начать заново</button>
     </div>
   </div>
 </section>
@@ -188,13 +174,13 @@
   <div class="landing-bg"><img src="img/jesus.svg" alt=""/></div>
   <div class="landing-content">
     <div class="reveal" data-d="0">
-      <div class="kicker">Путь света · финал</div>
-      <h2>Крест цел</h2>
+      <div class="kicker" data-i18n="light_end_kicker">Путь света · финал</div>
+      <h2 data-i18n="light_end_title">Крест цел</h2>
     </div>
-    <p class="lead reveal" data-d="800">Семь кругов позади. Ты не оставил крест разбитым — и свет больше не гаснет.</p>
+    <p class="lead reveal" data-d="800" data-i18n="light_end_text">Семь кругов позади. Крест цел — и свет больше не гаснет.</p>
     <p class="reveal grace-line" data-d="1800">«Иди с миром».</p>
     <div class="reveal" data-d="2800">
-      <button class="btn btn-gold" data-act="restart">Начать заново</button>
+      <button class="btn btn-gold" data-act="restart" data-i18n="grace_btn">Начать заново</button>
     </div>
   </div>
 </section>
@@ -202,20 +188,21 @@
 <!-- ============ CAUGHT ============ -->
 <section class="screen" id="s-caught">
   <div class="caught-inner">
-    <div class="kicker">Он догнал тебя</div>
-    <h2>Тьма</h2>
-    <p>Демон не устал. Он просто больше не отпускал.</p>
+    <div class="kicker" data-i18n="caught_kicker">Он догнал тебя</div>
+    <h2 data-i18n="caught_title">Тьма</h2>
+    <p data-i18n="caught_p">Демон не устал. Он просто больше не отпускал.</p>
     <div class="actions">
-      <button class="btn btn-gold" data-act="startAbyss">Ещё раз</button>
-      <button class="btn btn-ghost btn-sm" data-act="home">В начало</button>
+      <button class="btn btn-gold" data-act="startAbyss" data-i18n="caught_btn1">Ещё раз</button>
+      <button class="btn btn-ghost btn-sm" data-act="home" data-i18n="caught_btn2">В начало</button>
     </div>
   </div>
 </section>
 
-<noscript><div class="noscript">Для этой притчи нужен JavaScript.</div></noscript>
+<noscript><div class="noscript" data-i18n="home_noscript">Для этой притчи нужен JavaScript.</div></noscript>
 
-<button id="mute" class="mute" aria-label="Звук" title="Звук">♪</button>
+<button id="mute" class="mute" aria-label="Звук" data-i18n="mute" title="Звук">♪</button>
 
+<script src="js/i18n.js"></script>
 <script src="js/core.js"></script>
 <script src="js/light.js"></script>
 <script src="js/abyss.js"></script>
