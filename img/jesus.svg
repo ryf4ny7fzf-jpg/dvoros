@@ -65,7 +65,9 @@
   </g>
 
   <!-- halo glow -->
-  <circle cx="470" cy="312" r="270" fill="url(#halo)" opacity=".55" filter="url(#blur16)"/>
+  <circle cx="470" cy="312" r="270" fill="url(#halo)" opacity=".55" filter="url(#blur16)">
+    <animate attributeName="opacity" values="0.55;0.84;0.44;0.55" dur="5s" repeatCount="indefinite"/>
+  </circle>
   <circle cx="470" cy="312" r="140" fill="url(#halo)" opacity=".55"/>
   <circle cx="470" cy="312" r="150" fill="none" stroke="url(#gold)" stroke-width="2" opacity=".55"/>
   <circle cx="470" cy="312" r="164" fill="none" stroke="url(#gold)" stroke-width="1" opacity=".22"/>
@@ -106,7 +108,12 @@
   <path d="M690 500 C704 508 716 524 722 540" stroke="#3a2418" stroke-width="12" fill="none" opacity=".85"/>
   <!-- hand -->
   <g transform="translate(752 550) rotate(-16)">
-    <ellipse cx="0" cy="2" rx="23" ry="28" fill="url(#skin)"/>
+    <animate attributeName="transform"
+      values="translate(752 551) rotate(-15.5); translate(752 547) rotate(-16); translate(752 552) rotate(-16.4); translate(752 551) rotate(-15.5)"
+      dur="2.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1"/>
+    <ellipse cx="0" cy="2" rx="23" ry="28" fill="url(#skin)">
+      <animate attributeName="cy" values="2;6;2" dur="3.2s" repeatCount="indefinite"/>
+    </ellipse>
     <g stroke="url(#skin)" stroke-width="12" stroke-linecap="round" fill="none">
       <path d="M-15 -17 L-20 -42"/>
       <path d="M-5 -24 L-6 -53"/>
